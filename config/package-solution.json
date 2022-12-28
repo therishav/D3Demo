@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "d-3-demo-client-side-solution",
+    "id": "70dddd4e-c9a1-486f-a34c-0df5e8ec097e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "d-3-demo description"
+      },
+      "longDescription": {
+        "default": "d-3-demo description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "d-3-demo Feature",
+        "description": "The feature that activates elements of the d-3-demo solution.",
+        "id": "2e612628-60d1-436b-a007-2e1cb40bbde1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/d-3-demo.sppkg"
+  }
+}
