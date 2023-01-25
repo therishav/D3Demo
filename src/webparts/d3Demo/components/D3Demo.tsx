@@ -4,6 +4,7 @@ import { ID3DemoProps } from "./ID3DemoProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import App from "./App";
 import Line from "./Line";
+import Bar from "./Bar";
 
 export default class D3Demo extends React.Component<ID3DemoProps, {}> {
   public render(): React.ReactElement<ID3DemoProps> {
@@ -15,6 +16,6 @@ export default class D3Demo extends React.Component<ID3DemoProps, {}> {
     //   userDisplayName,
     // } = this.props;
 
-    return <Line />;
+    return <Bar />;
   }
 }
