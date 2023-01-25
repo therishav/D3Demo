@@ -29,6 +29,10 @@ function Bar() {
       .padding(0.5);
 
     const yScale: any = scaleLinear().domain([0, 150]).range([150, 0]);
+    const colorScale: any = scaleLinear()
+      .domain([75, 100, 150])
+      .range(["green", "orange", "red"])
+      .clamp(true);
 
     const xAxis: any = axisBottom(xScale).ticks(data.length);
 
@@ -42,9 +46,12 @@ function Bar() {
       .data(data)
       .join("rect")
       .attr("class", "bar")
+      .style("transform", "scale(1, -1")
       .attr("x", (value: any, index: any) => xScale(index))
-      .attr("y", yScale)
+      .attr("y", -150)
       .attr("width", xScale.bandwidth())
+      .transition()
+      .attr("fill", colorScale)
       .attr("height", (value) => 150 - yScale(value));
   }, [data]);
 
