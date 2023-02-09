@@ -13,6 +13,7 @@ import {
 } from "d3";
 import styles from "./D3Demo.module.scss";
 import { values } from "lodash";
+import { Tooltip } from "office-ui-fabric-react";
 
 require("./Styles.css");
 
@@ -50,6 +51,15 @@ function Bar() {
       .attr("x", (value: any, index: any) => xScale(index))
       .attr("y", -150)
       .attr("width", xScale.bandwidth())
+      .on("mouseenter", (value: any, index) => {
+        svg
+          .selectAll(".tooltip")
+          .data([value])
+          .join("text")
+          .attr("class", "tooltip")
+          .text(value.target.id);
+      })
+      .on("mouseleave", () => svg.select(".tooltip").remove())
       .transition()
       .attr("fill", colorScale)
       .attr("height", (value) => 150 - yScale(value));
@@ -74,7 +84,7 @@ function Bar() {
         </button>
         <button
           onClick={() => {
-            setData(data.filter((value) => value < 35));
+            setData(data.map((value) => (value > 90 ? 30 : value)));
           }}
         >
           {"Filter data"}
