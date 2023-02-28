@@ -51,3 +51,34 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
+// .main {
+// }
+.main_overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-color: black;
+  border-width: 20px;
+}
+.overview_card {
+  flex-basis: 250px;
+  flex-grow: 1;
+  margin: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100px;
+  border: 1px solid darkblue;
+  border-radius: 4px;
+  color: darkblue;
+}
+
+#workbenchPageContent {
+  margin: 0;
+  max-width: none;
+}
+/* .container {
+    width: auto !important;
+} */

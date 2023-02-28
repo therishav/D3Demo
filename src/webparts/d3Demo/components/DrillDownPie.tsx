@@ -14,7 +14,7 @@ interface IDrillDownPie {
   y: any;
 }
 
-const Arc = (props: { arcData: any }) => {
+const Arc = (props: { arcData: any; onClick: any }) => {
   const [addRadius, setaddRadius] = React.useState(0);
   const arc = d3
     .arc()
@@ -33,19 +33,40 @@ const Arc = (props: { arcData: any }) => {
       index={props.arcData.data.index}
       onMouseOver={mouseOver}
       onMouseOut={mouseOut}
+      onClick={props.onClick}
     />
   );
 };
 
 const DrillDownPie = (props: IDrillDownPie) => {
-  const pie = d3.pie().value((d: any) => d.number);
+  const [renderData, setRenderData] = React.useState(props.pieData);
+
+  const pie = d3.pie().value((d: any) => d.exchanges);
   console.log(pie(props.pieData));
+
+  function drilldown(index: number) {
+    console.log(props.pieData[index]);
+    setRenderData(props.pieData[index].users);
+  }
+
+  function drillup() {
+    setRenderData(props.pieData);
+    console.log("Hello");
+  }
 
   return (
     <g transform={`translate(${props.x}, ${props.y})`}>
-      {pie(props.pieData).map((d) => (
-        <Arc arcData={d} />
+      {pie(renderData).map((d) => (
+        <Arc arcData={d} onClick={() => drilldown(d.index)} />
       ))}
+      <circle
+        cx={0}
+        cy={0}
+        r={15}
+        onClick={() => drillup()}
+        fill={"white"}
+        cursor={"pointer"}
+      />
     </g>
   );
 };
